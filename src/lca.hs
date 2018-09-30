@@ -1,15 +1,21 @@
+module Lca
+    ( myTree , lca, lca_show
+    ) where
+
 import Text.Printf
 
 data Tree a = Empty | Node a (Tree a) (Tree a) deriving Show
 
 myTree :: Tree Int
 myTree = Node 1
-    (Node 2
-        (Node 4 Empty Empty)
-        (Node 5 Empty Empty))
-    (Node 3
-        (Node 6 Empty Empty)
-        (Node 7 Empty Empty))
+            (Node 2
+                (Node 4 Empty Empty)
+                (Node 5 Empty Empty)
+            )
+            (Node 3
+                (Node 6 Empty Empty)
+                (Node 7 Empty Empty)
+            )
 
 
 lca :: Eq a => Tree a -> a -> a -> Either Bool a
@@ -30,15 +36,7 @@ lca (Node v tl tr) n1 n2 =
         _ -> Left False
 
 lca_show :: (Eq a, Show a, PrintfArg a) => Tree a -> a -> a -> String
-lca_show t n1 n2 = printf "LCA(%d,%d)=%s" n1 n2 result
+lca_show t n1 n2 = printf "%s" result
     where result = case lca t n1 n2 of
                         Right a -> show a
                         _ -> "not found"
-
-main = mapM print [
-            lca_show myTree 0 9,
-            lca_show myTree 0 5,
-            lca_show myTree 4 5,
-            lca_show myTree 4 6,
-            lca_show myTree 3 4,
-            lca_show myTree 2 4]
