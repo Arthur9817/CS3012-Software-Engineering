@@ -19,3 +19,6 @@ main =  hspec $ do
 
     it "returns 1 for LCA 2 and 6" $ do
       (lca_show myTree 2 6) == "1" `shouldBe` True
+
+    it "returns 1 for LCA 3 and 4" $ do
+        (lca_show myTree 3 4) == "1" `shouldBe` True
