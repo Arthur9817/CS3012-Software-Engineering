@@ -7,7 +7,6 @@ class Node:
 
 def findLCA(root, n1, n2):
 
-    # Base Case
     if root is None:
         return None
 
@@ -28,4 +27,4 @@ root.right = Node(3)
 root.left.left = Node(4)
 root.left.right = Node(5)
 root.right.left = Node(6)
-root.right.right = Node(7) 
+root.right.right = Node(7)
